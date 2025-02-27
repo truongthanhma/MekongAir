@@ -1,0 +1,363 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Logo Styles */
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin-left: 20px;
+}
+
+.logo .A {
+    background: linear-gradient(45deg, #4fc3f7, #2196f3); /* Màu xanh dương gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo .Q {
+    background: linear-gradient(45deg, #ff6f61, #ff3d00); /* Màu đỏ gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo .I {
+    color: #000; /* Màu đen cho chữ I */
+}
+
+.logo .registered {
+    font-size: 0.4em;
+    vertical-align: super;
+    margin-left: 5px;
+}
+
+/* Header Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    background-color: #e3f2fd; /* Light blue background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header:hover {
+    background-color: #bbdefb; /* Slightly darker blue on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #000; /* Chữ màu đen */
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #333; /* Chữ màu đen nhạt khi hover */
+}
+
+/* Title in header */
+.custom-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4fc3f7, #2196f3);  /* Hiệu ứng gradient xanh dương */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #4d4d4d;  /* Màu chữ đen */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    animation: slideIn 1.5s ease-out;
+}
+
+/* Animation */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Hiệu ứng phát sáng */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(0, 123, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(0, 123, 255, 0.7), 0 0 30px rgba(0, 123, 255, 0.7);
+    }
+}
+
+/* Search Bar Styles */
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    border: 1px solid #007bff;
+    border-radius: 20px;
+    padding: 10px;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.search-btn {
+    border-radius: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Search Suggestions Dropdown */
+#search-suggestions {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#search-suggestions.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#search-suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+#search-suggestions div:last-child {
+    border-bottom: none;
+}
+
+#search-suggestions div:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+}
+
+#search-suggestions div.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Sidebar Styles */
+#sidebar {
+    background-color: #e3f2fd; /* Màu nền giống header */
+    padding-top: 20px;
+    padding-left: 0;  /* Loại bỏ padding để mục chiếm hết chiều rộng */
+    padding-right: 0; /* Loại bỏ padding để mục chiếm hết chiều rộng */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+#sidebar .nav-link {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    color: #000; /* Màu chữ đen */
+    border-radius: 0; /* Loại bỏ bo tròn để chiếm hết chiều dài */
+    margin-bottom: 0;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    background-color: #e3f2fd; /* Đặt màu nền giống header */
+    width: 100%; /* Chiếm toàn bộ chiều dài */
+}
+
+#sidebar .nav-link:hover {
+    background-color: #bbdefb; /* Màu nền xanh đậm hơn khi hover */
+    color: white; /* Màu chữ trắng khi hover */
+    transform: translateX(5px); /* Hiệu ứng di chuyển khi hover */
+    box-shadow: 2px 2px 8px rgba(0, 123, 255, 0.1);
+}
+
+#sidebar .nav-link.active {
+    background-color: #d9e6e5; /* Màu nền xanh đậm cho mục đang chọn */
+    color: white;
+}
+
+#sidebar .nav-link i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+#sidebar .nav-item {
+    margin-bottom: 10px; /* Khoảng cách giữa các mục */
+}
+
+
+
+/* Map Container */
+#map {
+    margin-top: 10px;
+    height: calc(100vh - 185px); /* Tính toán chiều cao theo màn hình */
+    width: 100%;
+    border-radius: 0px;
+    margin-left: 0px;
+    margin-right: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* Nếu cần thiết để điều chỉnh */
+}
+/* AQI Info Tab */
+#info-tab {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    border-radius: 6px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: none;
+    transform: translate(-50%, -50%); /* Để căn giữa so với tọa độ click */
+}
+
+
+#info-tab.active {
+    display: block;
+}
+
+/* AQI Table Styles */
+.aqi-good {
+    background-color: #66bb6a; /* Green for good */
+    color: white;
+}
+
+.aqi-moderate {
+    background-color: #ffca28; /* Yellow for moderate */
+    color: #4d4d4d;
+}
+
+.aqi-unhealthy {
+    background-color: #ef5350; /* Orange for unhealthy */
+    color: white;
+}
+
+.aqi-very-unhealthy {
+    background-color: #d32f2f; /* Red for very unhealthy */
+    color: white;
+}
+
+.aqi-hazardous {
+    background-color: #9c27b0; /* Purple for hazardous */
+    color: white;
+}
+
+.aqi-danger {
+    background-color: #b71c1c; /* Dark red for danger */
+    color: white;
+}
+
+/* Custom AQI Title */
+.custom-aqi-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    color: #4d4d4d;
+}
+
+.table thead th {
+    color: #4d4d4d; 
+}
+/* Footer Styles */
+footer {
+    width: 100%;
+    background-color: white; /* Same background as header */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Shadow giống header */
+    color: #4d4d4d; /* Chữ màu đen */
+    padding: 10px 0;
+    text-align: center;
+    font-size: 8;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+footer:hover {
+    background-color: white; /* Hover giống header */
+    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.15); /* Shadow khi hover */
+}
+
+footer span {
+    /* text-transform: uppercase; */
+    letter-spacing: 1px;
+}
+
+footer a {
+    color: #000; /* Link màu đen */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #333; /* Màu đen nhạt khi hover link */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #sidebar {
+        display: none;
+    }
+
+    #info-tab {
+        width: 90%;
+        right: 5%;
+        top: 20%;
+    }
+}
+
+/* AOS (Animation on Scroll) */
+[data-aos] {
+    transition-property: transform, opacity !important;
+    transition-duration: 1s !important;
+    will-change: transform, opacity;
+}
+

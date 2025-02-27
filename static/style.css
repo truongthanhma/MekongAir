@@ -1,0 +1,1060 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+body.modal-open {
+    overflow-y: hidden; 
+    padding-right: 0 !important; 
+}
+
+/* Logo Styles */
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin-left: 20px;
+}
+
+.logo .A {
+    background: linear-gradient(45deg, #4fc3f7, #2196f3); /* Màu xanh dương gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo .Q {
+    background: linear-gradient(45deg, #ff6f61, #ff3d00); /* Màu đỏ gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo .I {
+    color: #000; /* Màu đen cho chữ I */
+}
+
+.logo .registered {
+    font-size: 0.4em;
+    vertical-align: super;
+    margin-left: 5px;
+}
+
+/* Header Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    background-color: #e3f2fd; /* Light blue background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header:hover {
+    background-color: #bbdefb; /* Slightly darker blue on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #000; /* Chữ màu đen */
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #333; /* Chữ màu đen nhạt khi hover */
+}
+
+/* Title in header */
+.custom-title {
+    font-size: 2.0rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4fc3f7, #2196f3);  /* Hiệu ứng gradient xanh dương */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #4d4d4d;  /* Màu chữ đen */
+    letter-spacing: 2px;
+    text-align: left;
+    margin-left: 20px;
+    padding: 20px 0;
+    animation: slideIn 1.5s ease-out;
+}
+
+/* Animation */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Hiệu ứng phát sáng */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(0, 123, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(0, 123, 255, 0.7), 0 0 30px rgba(0, 123, 255, 0.7);
+    }
+}
+
+/* Search Bar Styles */
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    border: 1px solid #007bff;
+    border-radius: 20px;
+    padding: 10px;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.search-btn {
+    border-radius: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.search-bar::before {
+    content: '\f002'; /* Mã FontAwesome cho biểu tượng kính lúp */
+    font-family: 'Font Awesome 5 Free'; /* Font icon nếu sử dụng FontAwesome */
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
+    pointer-events: none; /* Đảm bảo không làm ảnh hưởng đến thao tác người dùng */
+}
+
+/* Search Suggestions*/
+.search-suggestions {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Thêm opacity */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Thêm border-radius mềm mại */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    max-height: 300px;
+    overflow-y: auto; /* Chỉ hiển thị thanh dọc */
+    overflow-x: hidden; /* Loại bỏ thanh ngang */
+    transition: all 0.4s ease, max-height 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+}
+
+.search-suggestions.active {
+    opacity: 1;
+    visibility: visible;
+    max-height: 300px;
+    transform: translateY(0);
+}
+
+.search-suggestions ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-suggestions li {
+    padding: 12px 18px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.search-suggestions li:hover {
+    background-color: #f1f3f5;
+    padding-left: 25px;
+    border-radius: 5px; /* Tạo sự mềm mại khi hover */
+}
+
+.search-suggestions li:last-child {
+    border-bottom: none;
+}
+
+/* Hiệu ứng fade-in với độ dịch chuyển nhẹ */
+.search-suggestions.active {
+    animation: fadeInUp 0.4s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hiệu ứng khi input được focus */
+.search-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Ẩn nút "x" (nút delete) trên các trình duyệt Webkit (Chrome, Safari, Edge) */
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Ẩn nút "x" trên Firefox */
+input[type="search"]::-moz-search-cancel-button {
+    display: none;
+}
+
+/* Hiệu ứng focus khi hover vào các item gợi ý */
+.search-suggestions li:focus,
+.search-suggestions li:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, padding-left 0.3s ease;
+}
+
+/* Hiệu ứng focus mềm mại cho toàn bộ dropdown */
+#search-suggestions div:focus {
+    outline: none;
+    background-color: #007bff;
+    color: white;
+}
+
+/* Thêm hiệu ứng scale cho gợi ý để tinh tế hơn */
+.search-suggestions li {
+    transition: transform 0.3s ease;
+}
+
+.search-suggestions li:hover {
+    transform: scale(1.05);
+}
+
+/* Map Container */
+#map {
+    margin-top: 10px;
+    height: 97%; /* Tính toán chiều cao theo màn hình */
+    width: 100%;
+    border-radius: 0px;
+    margin-left: 0px;
+    margin-right: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* Nếu cần thiết để điều chỉnh */
+}
+
+/* Overlay toàn màn hình khi đang tải */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu xám tối hơn với độ mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px); /* Hiệu ứng mờ phía sau */
+    display: none; /* Mặc định ẩn */
+    transition: opacity 0.3s ease; /* Hiệu ứng ẩn/hiện mượt mà */
+}
+
+:root {
+    --primary-color: #3498db; /* Màu xanh lam phổ biến */
+    --background-color: rgba(255, 255, 255, 0.7); /* Màu nền mờ trung tính */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Màu đổ bóng nhẹ */
+}
+
+/* Hộp chứa tiến trình đơn giản */
+#progress-bar {
+    width: 64px;
+    height: 64px;
+    background: var(--background-color); /* Nền trắng mờ */
+    border-radius: 50%; /* Hình tròn */
+    box-shadow: 0 4px 10px var(--shadow-color); /* Đổ bóng nhẹ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Vòng tròn xoay đơn giản */
+.circular-progress {
+    width: 48px;
+    height: 48px;
+    border: 5px solid transparent; /* Đường viền trong suốt */
+    border-top: 5px solid var(--primary-color); /* Màu xanh lam cho hiệu ứng xoay */
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Animation xoay mượt */
+}
+
+/* Animation xoay */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation xuất hiện */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* AQI Info Tab */
+#info-tab {
+    position: fixed;
+    background-color: #f9f9f9; /* Màu nền trung tính nhẹ */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Đổ bóng tinh tế */
+    z-index: 10000;
+    border-radius: 5px; /* Bo tròn nhẹ */
+    padding: 20px;
+    width: 80%;
+    max-width: 400px; /* Độ rộng vừa phải */
+    display: none;
+    cursor: grab;
+}
+
+#info-tab.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out; /* Hiệu ứng mượt mà hơn */
+}
+
+/* CSS cho nút đóng */
+.close-btn-info {
+    background-color: transparent; 
+    border: none; 
+    font-size: 20px;
+    color: black; 
+    cursor: pointer; 
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    line-height: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Hiệu ứng mượt mà */
+}
+
+/* Hover vào nút */
+.close-btn-info:hover {
+    background-color: red;
+    color: white; 
+    transform: scale(1.2);
+}
+
+
+/* Hiệu ứng fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Điều chỉnh d-flex cho tiêu đề và nút đóng */
+.info-tab .d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Đường viền tinh tế */
+}
+
+/* Tiêu đề */
+.custom-aqi-title {
+    font-size: 1.3rem; /* Kích thước vừa phải */
+    font-weight: 600; /* Đậm nhẹ */
+    color: #007acc; /* Màu sắc chuyên nghiệp */
+    text-align: center;
+    margin: 0;
+}
+
+/* Bảng hiển thị kết quả AQI */
+.table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse; /* Loại bỏ khoảng cách giữa các ô */
+}
+
+.table th, .table td {
+    font-size: 0.9rem;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.table td {
+    color: white;
+}
+
+/* Các đường viền bo cho bảng */
+.table thead th {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* Footer Styles */
+footer {
+    width: 100%;
+    background-color: white; /* Nền giống header */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng giống header */
+    color: #4d4d4d; /* Chữ màu đen */
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+footer:hover {
+    background-color: white; /* Hover giống header */
+    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.15); /* Shadow khi hover */
+}
+
+footer span {
+    letter-spacing: 1px;
+}
+
+footer a {
+    color: #000; /* Link màu đen */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #333; /* Màu đen nhạt khi hover link */
+}
+
+/* AOS (Animation on Scroll) */
+[data-aos] {
+    transition-property: transform, opacity !important;
+    transition-duration: 1s !important;
+    will-change: transform, opacity;
+}
+
+/* Modal */
+
+/* Modal container */
+.modal.fade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 9999;
+}
+
+/* Hộp modal */
+.modal-dialog {
+    background-color: white;
+    padding: 3px 20px; 
+    padding-right: 15px;
+    box-shadow: none; 
+    max-width: 400px;
+    width: 100%;
+    border-radius: 5px; 
+    border: none; 
+}
+
+/* Tiêu đề modal */
+.modal-header {
+    border-bottom: none; 
+    padding: 0px;
+}
+
+/* Nội dung modal */
+.modal-content {
+    background-color: white;
+    border: none; 
+    box-shadow: none; 
+    padding: 0px;
+    margin: 0px;
+}
+
+.modal-title {
+    font-size: 1.5rem; 
+    font-weight: bold;
+    color: #333; 
+    font-family: 'Arial', sans-serif;
+}
+
+/* Nút đóng modal */
+.close {
+    background-color: transparent;
+    border: none; 
+    font-size: 2.4rem;
+    color: #333; 
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff6347;
+}
+
+/* Nội dung modal */
+.modal-body {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+    padding: 10px 0;
+    font-family: 'Arial', sans-serif; 
+    border: none; 
+    word-spacing: 1px;
+}
+
+.modal-body .icon-maker {
+    color: #007BFF;
+}
+
+/* Nút xác nhận */
+.modal-footer {
+    border-top: none; 
+    padding-top: 0;
+}
+
+.modal-footer .btn-primary {
+    background-color: #007bff; 
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px; 
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: none; 
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #719ecf; 
+}
+
+/* Thiết lập cơ bản cho nút .btn-primary */
+.btn-primary {
+    background-color: #3fafe3; /* Màu xanh dương nhạt */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hiệu ứng hover cho nút */
+.btn-primary:hover {
+    background-color: #147da0; /* Màu xanh dương dịu khi hover */
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+    box-shadow: 0 8px 15px rgba(103, 183, 209, 0.3); /* Đổ bóng mềm mại */
+}
+
+/* Hiệu ứng khi nhấn xuống */
+.btn-primary:active {
+    transform: scale(0.95); /* Thu nhỏ nhẹ khi nhấn */
+    box-shadow: 0 4px 10px rgba(103, 183, 209, 0.2); /* Giảm đổ bóng */
+}
+
+/* Thêm animation khi nút xuất hiện */
+.btn-primary {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* CSS cho container của form chọn ngày và giờ */
+.form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 350px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    animation: fadeInOpacity 0.5s ease-out; /* Animation khi xuất hiện chỉ đổi opacity */
+}
+
+@keyframes fadeInOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.form-container h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Đảm bảo input date và select có cùng chiều rộng */
+.form-container input[type="date"],
+.form-container select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Animation khi focus */
+}
+
+.form-container input[type="date"]:focus,
+.form-container select:focus {
+    border-color: #28a745;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+    outline: none;
+}
+
+/* Style nút xác nhận và đóng */
+.submit-btn, .close-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng hover */
+}
+
+/* Nút xác nhận với màu xanh lá cây và hiệu ứng hover */
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+    transform: translateY(-3px); /* Di chuyển nhẹ lên khi hover */
+    box-shadow: 0 8px 16px rgba(33, 136, 56, 0.3);
+}
+
+/* Nút đóng với màu đỏ và hiệu ứng hover */
+.close-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.close-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-3px); /* Di chuyển nhẹ lên khi hover */
+    box-shadow: 0 8px 16px rgba(200, 35, 51, 0.3);
+}
+
+
+/* Thêm biểu tượng lịch vào ô chọn ngày */
+.form-container input[type="date"] {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    -webkit-appearance: none;  /* Xóa kiểu mặc định của trình duyệt */
+}
+
+/* Zoom bản đồ khi click */
+/* CSS cho thông báo zoom với hiệu ứng và màu sắc pastel */
+#zoom-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(0, 0, 0, 0.3); /* Màu pastel nhẹ nhàng */
+    padding: 20px 50px;
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    text-align: center;
+    letter-spacing: 1.5px; /* Giãn cách chữ tạo cảm giác chuyên nghiệp */
+    font-family: 'Poppins', sans-serif; /* Font chữ mềm mại và hiện đại */
+    animation: fadeInOut 6s ease forwards; /* Animation fade in/out */
+}
+
+/* Animation fadeInOut khi thông báo hiện lên */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+
+/* sidebar */
+
+/* Cân chỉnh lại chiều rộng của sidebar và main content */
+#sidebar {
+    width: 16%;
+}
+
+#main-content {
+    width: 80%; 
+}
+
+/* Tùy chỉnh màu sắc cho từng mức độ AQI */
+.aqi-good {
+    background-color: #4caf50;
+    color: white;
+    animation: glow 2s ease-in-out infinite alternate; /* Hiệu ứng phát sáng nhẹ */
+}
+
+.aqi-moderate {
+    background-color: #ffeb3b;
+    color: #000;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.aqi-unhealthy-for-sensitive {
+    background-color: #ffb74d;
+    color: white;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.aqi-unhealthy {
+    background-color: #ff7043;
+    color: white;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.aqi-very-unhealthy {
+    background-color: #e53935;
+    color: white;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.aqi-hazardous {
+    background-color: #9c27b0;
+    color: white;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.aqi-danger {
+    background-color: #b71c1c;
+    color: white;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Hiệu ứng phát sáng cho từng mức độ AQI */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+}
+
+/* Điều chỉnh kích thước và vị trí icon */
+.aqi-scale i {
+    margin-left: 10px;
+    font-size: 1.2rem;
+}
+
+/* Hiệu ứng khi hover vào các hàng trong bảng */
+.aqi-scale tbody tr:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Đảm bảo nội dung trong cột AQI Scale không xuống hàng */
+.aqi-scale td:first-child {
+    white-space: nowrap;
+    width: 20%;
+}
+
+/* Tùy chỉnh tiêu đề */
+.aqi-health-scale h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Hiệu ứng fade-in cho tiêu đề */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bảng tùy chỉnh */
+.aqi-scale {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Viền mềm mại cho bảng */
+.aqi-scale td, .aqi-scale th {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.aqi-scale th {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: bold;
+}
+
+.aqi-note {
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 3px solid #3498db; /* Dải màu ở trên để nổi bật */
+}
+
+.aqi-learn-more {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.aqi-learn-more a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.aqi-learn-more a:hover {
+    text-decoration: underline;
+}
+
+/* ####################################### */
+
+#location-prompt {
+    background-color: #ffffff; /* Nền trắng */
+    color: #333; /* Màu chữ tối để dễ đọc */
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Bóng đổ nhẹ */
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.location-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.location-prompt p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.location-prompt button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#use-location {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#skip-location {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#location-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000; /* Đảm bảo hộp thoại luôn ở trên cùng */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
+.chart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Tăng độ mờ cho nền */
+    z-index: 99999999; /* Ưu tiên cao nhất */
+}
+
+.chart-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 95%; /* Tăng chiều rộng */
+    max-width: 800px; /* Tăng tối đa chiều rộng */
+}
+
+#aqiChart {
+    width: 100%; /* Đảm bảo biểu đồ mở rộng toàn bộ khung */
+    height: 400px; /* Tăng chiều cao của biểu đồ */
+}
+
+.close-chart {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    color: black;
+    transition: color 0.3s, transform 0.3s; /* Thêm hiệu ứng chuyển màu và phóng to */
+}
+
+.close-chart:hover {
+    color: #ff0000; /* Đổi màu thành đỏ khi hover */
+    transform: scale(1.2); /* Phóng to nút khi hover */
+}
+
+/* AQI on marker */
+.custom-aqi-icon {
+    font-size: 12px;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
+.aqi-toast {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    max-width: 300px;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

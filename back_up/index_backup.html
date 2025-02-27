@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Mekong-delta</title>
+    
+    <!-- Bootstrap CSS for responsiveness -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons for weather and wind symbols -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Leaflet CSS for the map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <!-- AOS CSS for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-sm" data-aos="fade-down" data-aos-duration="1000">
+        <div class="container-fluid d-flex justify-content-between align-items-center text-center">
+            <!-- CSS Logo -->
+            <div class="logo d-flex align-items-center">
+                <span class="A">A</span>
+                <span class="Q">Q</span>
+                <span class="I">I</span>
+                <span class="registered">®</span>
+            </div>
+
+            <!-- Header Title -->
+            <h1 class="custom-title">Dự báo AQI cho Đồng bằng Sông Cửu Long</h1>
+
+            <!-- Search bar with autocomplete -->
+            <form class="d-flex position-relative search-bar">
+                <input id="search-district" class="form-control me-2 search-input" type="search" placeholder="Tìm huyện..." aria-label="Search">
+                <button class="btn btn-primary search-btn" type="submit">Tìm kiếm</button>
+                <!-- Dropdown for suggestions -->
+                <div id="search-suggestions" class="search-suggestions"></div>
+            </form>
+        </div>
+    </header>
+
+    <!-- Main layout with sidebar and content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky" data-aos="fade-right">
+                    <ul class="nav flex-column mt-4">
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" data-aos="fade-up">
+                <div id="map"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Floating Info Tab for AQI -->
+    <div id="info-tab" class="info-tab" data-aos="fade-down">
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Custom AQI Title -->
+            <div class="custom-aqi-title">Kết quả AQI cho huyện</div>
+            <!-- Close Button -->
+            <button id="close-info-tab" class="btn-close" aria-label="Close"></button>
+        </div>
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Thời gian</th>
+                    <th>AQI</th>
+                    <th>Mức ô nhiễm</th>
+                </tr>
+            </thead>
+            <tbody id="aqi-table-body">
+                <!-- Results will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-3">
+        <div>
+            <span>&copy; 2024 AQI Mekong-delta. All rights reserved.</span>
+        </div>
+    </footer>    
+
+    <!-- jQuery, jQuery UI, Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <!-- AOS JS for animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Custom JS -->
+    <script src="/static/map.js"></script>
+</body>
+</html>
